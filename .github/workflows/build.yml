@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # nodig om releases te maken
+  contents: write  # Necessary for creating releases
 
 jobs:
   build:
@@ -44,7 +44,7 @@ jobs:
             **/build/libs/*.zip
 
   release:
-    # draait alleen als de push een tag is die begint met v (v1.0.0 etc.)
+    # Only runs when the push tag starts with a v
     if: startsWith(github.ref, 'refs/tags/v')
     needs: build
     runs-on: ubuntu-latest
