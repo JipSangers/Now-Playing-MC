@@ -215,7 +215,6 @@ public class NowPlayingClient implements ClientModInitializer, ModMenuApi {
         // Client stop: stop polling + kill companion + free texture
         ClientLifecycleEvents.CLIENT_STOPPING.register(client -> shutdownEverything());
 
-        // If you use singleplayer integrated server, you may want this too
         ServerLifecycleEvents.SERVER_STOPPED.register(server -> {
             System.out.println("[NowPlayingMod] Integrated server stopped. Stopping C# server and polling.");
             shutdownEverything();
@@ -521,7 +520,7 @@ public class NowPlayingClient implements ClientModInitializer, ModMenuApi {
             fetchAndMaybeUpdateTexture(textChanged || appChanged);
         }
 
-        // If media not active, clear texture (optional)
+        // If media not active, clear texture 
         if (!isMediaActive) {
             clearTextureOnly();
         }

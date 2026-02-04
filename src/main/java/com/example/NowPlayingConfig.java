@@ -6,25 +6,34 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = "nowplaying")
 public class NowPlayingConfig implements ConfigData {
-        // Which side of the screen the HUD panel should stick to
+
+    // Which side of the screen the HUD panel should stick to
     public enum Side {
         LEFT,
         RIGHT
     }
 
+    // ─────────────────────────────
+    // Layout
+    // ─────────────────────────────
+
     @ConfigEntry.Gui.Tooltip
-        // Default position for the HUD panel
     public Side sidePosition = Side.RIGHT;
 
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
     public int yPosition = 10;
 
+    /**
+     * Background opacity (0 = fully transparent, 100 = fully opaque)
+     */
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
-    public int backgroundOpacity = 55;    // Toggle individual parts of the HUD panel
+    public int backgroundOpacity = 55;
 
-
+    // ─────────────────────────────
+    // Visibility toggles
+    // ─────────────────────────────
 
     @ConfigEntry.Gui.Tooltip
     public boolean showCoverArt = true;
